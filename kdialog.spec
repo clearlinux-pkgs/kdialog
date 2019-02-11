@@ -5,18 +5,18 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdialog
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kdialog-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kdialog-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kdialog-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kdialog-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kdialog-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kdialog-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0
-Requires: kdialog-bin
-Requires: kdialog-data
-Requires: kdialog-license
-Requires: kdialog-locales
+Requires: kdialog-bin = %{version}-%{release}
+Requires: kdialog-data = %{version}-%{release}
+Requires: kdialog-license = %{version}-%{release}
+Requires: kdialog-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
@@ -29,8 +29,8 @@ The syntax is very much inspired from the "dialog" command
 %package bin
 Summary: bin components for the kdialog package.
 Group: Binaries
-Requires: kdialog-data
-Requires: kdialog-license
+Requires: kdialog-data = %{version}-%{release}
+Requires: kdialog-license = %{version}-%{release}
 
 %description bin
 bin components for the kdialog package.
@@ -61,26 +61,26 @@ locales components for the kdialog package.
 
 
 %prep
-%setup -q -n kdialog-18.08.0
+%setup -q -n kdialog-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535196942
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549865815
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535196942
+export SOURCE_DATE_EPOCH=1549865815
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kdialog
-cp COPYING %{buildroot}/usr/share/doc/kdialog/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/kdialog/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/kdialog
+cp COPYING %{buildroot}/usr/share/package-licenses/kdialog/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kdialog/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -99,9 +99,9 @@ popd
 /usr/share/dbus-1/interfaces/org.kde.kdialog.ProgressDialog.xml
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kdialog/COPYING
-/usr/share/doc/kdialog/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kdialog/COPYING
+/usr/share/package-licenses/kdialog/COPYING.DOC
 
 %files locales -f kdialog.lang
 %defattr(-,root,root,-)
