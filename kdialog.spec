@@ -6,11 +6,11 @@
 #
 Name     : kdialog
 Version  : 18.12.3
-Release  : 5
+Release  : 6
 URL      : https://download.kde.org/stable/applications/18.12.3/src/kdialog-18.12.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.3/src/kdialog-18.12.3.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.3/src/kdialog-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Summary  : A utility for displaying dialog boxes from shell scripts
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0
 Requires: kdialog-bin = %{version}-%{release}
@@ -68,16 +68,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551996702
+export SOURCE_DATE_EPOCH=1555329557
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551996702
+export SOURCE_DATE_EPOCH=1555329557
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdialog
 cp COPYING %{buildroot}/usr/share/package-licenses/kdialog/COPYING
