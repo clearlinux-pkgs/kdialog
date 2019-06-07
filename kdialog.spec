@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdialog
-Version  : 19.04.1
-Release  : 9
-URL      : https://download.kde.org/stable/applications/19.04.1/src/kdialog-19.04.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.1/src/kdialog-19.04.1.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.1/src/kdialog-19.04.1.tar.xz.sig
+Version  : 19.04.2
+Release  : 10
+URL      : https://download.kde.org/stable/applications/19.04.2/src/kdialog-19.04.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.2/src/kdialog-19.04.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.2/src/kdialog-19.04.2.tar.xz.sig
 Summary  : A utility for displaying dialog boxes from shell scripts
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0
@@ -61,14 +61,14 @@ locales components for the kdialog package.
 
 
 %prep
-%setup -q -n kdialog-19.04.1
+%setup -q -n kdialog-19.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557440626
+export SOURCE_DATE_EPOCH=1559888146
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -83,7 +83,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557440626
+export SOURCE_DATE_EPOCH=1559888146
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdialog
 cp COPYING %{buildroot}/usr/share/package-licenses/kdialog/COPYING
