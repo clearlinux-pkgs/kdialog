@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kdialog
-Version  : 19.08.1
-Release  : 13
-URL      : https://download.kde.org/stable/applications/19.08.1/src/kdialog-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/kdialog-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/kdialog-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 14
+URL      : https://download.kde.org/stable/applications/19.08.2/src/kdialog-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/kdialog-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/kdialog-19.08.2.tar.xz.sig
 Summary  : A utility for displaying dialog boxes from shell scripts
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0
@@ -61,14 +61,14 @@ locales components for the kdialog package.
 
 
 %prep
-%setup -q -n kdialog-19.08.1
+%setup -q -n kdialog-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567699761
+export SOURCE_DATE_EPOCH=1570742233
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -81,11 +81,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567699761
+export SOURCE_DATE_EPOCH=1570742233
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdialog
 cp COPYING %{buildroot}/usr/share/package-licenses/kdialog/COPYING
