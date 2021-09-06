@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdialog
-Version  : 21.04.2
-Release  : 31
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kdialog-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kdialog-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kdialog-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 32
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kdialog-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kdialog-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kdialog-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0
@@ -63,35 +63,35 @@ locales components for the kdialog package.
 
 
 %prep
-%setup -q -n kdialog-21.04.2
-cd %{_builddir}/kdialog-21.04.2
+%setup -q -n kdialog-21.08.1
+cd %{_builddir}/kdialog-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623380683
+export SOURCE_DATE_EPOCH=1630909123
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623380683
+export SOURCE_DATE_EPOCH=1630909123
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdialog
-cp %{_builddir}/kdialog-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/kdialog/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kdialog-21.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/kdialog/e1d31e42d2a477d6def889000aa8ffc251f2354c
+cp %{_builddir}/kdialog-21.08.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/kdialog/e1d31e42d2a477d6def889000aa8ffc251f2354c
+cp %{_builddir}/kdialog-21.08.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kdialog/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
@@ -112,7 +112,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kdialog/7c203dee3a03037da436df03c4b25b659c073976
+/usr/share/package-licenses/kdialog/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 /usr/share/package-licenses/kdialog/e1d31e42d2a477d6def889000aa8ffc251f2354c
 
 %files locales -f kdialog.lang
