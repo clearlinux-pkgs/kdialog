@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kdialog
-Version  : 23.04.3
-Release  : 57
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/kdialog-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/kdialog-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/kdialog-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 58
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/kdialog-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/kdialog-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/kdialog-23.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0
@@ -27,9 +27,8 @@ BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev lib
 %define debug_package %{nil}
 
 %description
-kdialog allows you to display dialog boxes from shell scripts.
-The syntax is very much inspired from the "dialog" command
-(which shows text mode dialogs).
+KDialog allows you to display dialog boxes from shell scripts.
+The syntax is very much inspired from the "dialog" command (which shows text mode dialogs).
 
 %package bin
 Summary: bin components for the kdialog package.
@@ -66,15 +65,15 @@ locales components for the kdialog package.
 
 
 %prep
-%setup -q -n kdialog-23.04.3
-cd %{_builddir}/kdialog-23.04.3
+%setup -q -n kdialog-23.08.0
+cd %{_builddir}/kdialog-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688869990
+export SOURCE_DATE_EPOCH=1693064801
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -107,7 +106,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688869990
+export SOURCE_DATE_EPOCH=1693064801
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdialog
 cp %{_builddir}/kdialog-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/kdialog/e1d31e42d2a477d6def889000aa8ffc251f2354c || :
